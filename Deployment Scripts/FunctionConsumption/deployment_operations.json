@@ -1,0 +1,106 @@
+[
+  {
+    "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Resources/deployments/Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5/operations/2EB6E58B80FFC6F5",
+    "operationId": "2EB6E58B80FFC6F5",
+    "properties": {
+      "provisioningOperation": "Action",
+      "provisioningState": "Succeeded",
+      "timestamp": "2024-11-06T15:45:07.3479462Z",
+      "duration": "PT38.9125473S",
+      "trackingId": "2eee6297-221d-41e5-a5d4-f8dd41c53b06",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Storage/storageAccounts/multifuncapp2group9d8c",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "multifuncapp2group9d8c",
+        "actionName": "listKeys",
+        "apiVersion": "2019-06-01"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Resources/deployments/Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5/operations/B2529039C720EED0",
+    "operationId": "B2529039C720EED0",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2024-11-06T15:45:07.1025369Z",
+      "duration": "PT38.667138S",
+      "trackingId": "b6803c7e-736b-416f-bdf3-81aabdc36998",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Storage/storageAccounts/multifuncapp2group9d8c",
+        "resourceType": "Microsoft.Storage/storageAccounts",
+        "resourceName": "multifuncapp2group9d8c"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Resources/deployments/Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5/operations/B49BADF36111B0B0",
+    "operationId": "B49BADF36111B0B0",
+    "properties": {
+      "provisioningOperation": "Read",
+      "provisioningState": "Succeeded",
+      "timestamp": "2024-11-06T15:44:33.9456075Z",
+      "duration": "PT5.5102086S",
+      "trackingId": "b9378758-aaa5-42de-86c7-e934ec286a45",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/microsoft.insights/components/MultiFuncApp2",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "MultiFuncApp2",
+        "apiVersion": "2015-05-01"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Resources/deployments/Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5/operations/D9BF85CD009EDBC2",
+    "operationId": "D9BF85CD009EDBC2",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2024-11-06T15:44:33.8676557Z",
+      "duration": "PT5.4322568S",
+      "trackingId": "ce29d8a9-0d50-4ede-891d-4edd57a7a68a",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/microsoft.insights/components/MultiFuncApp2",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "MultiFuncApp2"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Resources/deployments/Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5/operations/D957D397D1615FE2",
+    "operationId": "D957D397D1615FE2",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Running",
+      "timestamp": "2024-11-06T16:00:42.7342627Z",
+      "duration": "PT16M14.2988638S",
+      "trackingId": "d01e6fb4-6fcd-4139-b054-0503387e243d",
+      "statusCode": 429,
+      "statusMessage": {
+        "status": "Failed",
+        "error": {
+          "code": "429",
+          "message": "App Service Plan Create operation is throttled for subscription 9555bc78-7a65-475f-9a4e-c4b264520f20. Please contact support if issue persists.",
+          "details": [
+            {
+              "message": "App Service Plan Create operation is throttled for subscription 9555bc78-7a65-475f-9a4e-c4b264520f20. Please contact support if issue persists."
+            },
+            {
+              "code": "429"
+            },
+            {}
+          ]
+        }
+      },
+      "targetResource": {
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/serverfarms/ASP-MultiFuncApp2group-82da",
+        "resourceType": "Microsoft.Web/serverfarms",
+        "resourceName": "ASP-MultiFuncApp2group-82da"
+      }
+    }
+  }
+]

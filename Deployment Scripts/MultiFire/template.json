@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "azureFirewalls_MultiFire_name": {
+            "defaultValue": "MultiFire",
+            "type": "String"
+        },
+        "publicIPAddresses_multifireip2_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Network/publicIPAddresses/multifireip2",
+            "type": "String"
+        },
+        "virtualNetworks_vnet_pljetrbx_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Network/virtualNetworks/vnet-pljetrbx",
+            "type": "String"
+        },
+        "publicIPAddresses_multifireip_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Network/publicIPAddresses/multifireip",
+            "type": "String"
+        },
+        "firewallPolicies_MultiFirewallPolicy_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Network/firewallPolicies/MultiFirewallPolicy",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/azureFirewalls",
+            "apiVersion": "2024-01-01",
+            "name": "[parameters('azureFirewalls_MultiFire_name')]",
+            "location": "japaneast",
+            "properties": {
+                "sku": {
+                    "name": "AZFW_VNet",
+                    "tier": "Basic"
+                },
+                "threatIntelMode": "Alert",
+                "additionalProperties": {},
+                "managementIpConfiguration": {
+                    "name": "multifireip2",
+                    "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_MultiFire_name')), '/azureFirewallIpConfigurations/multifireip2')]",
+                    "properties": {
+                        "publicIPAddress": {
+                            "id": "[parameters('publicIPAddresses_multifireip2_externalid')]"
+                        },
+                        "subnet": {
+                            "id": "[concat(parameters('virtualNetworks_vnet_pljetrbx_externalid'), '/subnets/AzureFirewallManagementSubnet')]"
+                        }
+                    }
+                },
+                "ipConfigurations": [
+                    {
+                        "name": "multifireip",
+                        "id": "[concat(resourceId('Microsoft.Network/azureFirewalls', parameters('azureFirewalls_MultiFire_name')), '/azureFirewallIpConfigurations/multifireip')]",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[parameters('publicIPAddresses_multifireip_externalid')]"
+                            },
+                            "subnet": {
+                                "id": "[concat(parameters('virtualNetworks_vnet_pljetrbx_externalid'), '/subnets/AzureFirewallSubnet')]"
+                            }
+                        }
+                    }
+                ],
+                "networkRuleCollections": [],
+                "applicationRuleCollections": [],
+                "natRuleCollections": [],
+                "firewallPolicy": {
+                    "id": "[parameters('firewallPolicies_MultiFirewallPolicy_externalid')]"
+                }
+            }
+        }
+    ]
+}

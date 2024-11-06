@@ -1,0 +1,203 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_MultiFuncAppService_name": {
+            "defaultValue": "MultiFuncAppService",
+            "type": "String"
+        },
+        "serverfarms_ASP_Multi4_916b_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Web/serverfarms/ASP-Multi4-916b",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2023-12-01",
+            "name": "[parameters('sites_MultiFuncAppService_name')]",
+            "location": "Japan East",
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Insights/components/MultiFuncAppService"
+            },
+            "kind": "functionapp",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "multifuncappservice.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "multifuncappservice.scm.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_ASP_Multi4_916b_externalid')]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "dnsConfiguration": {},
+                "vnetRouteAllEnabled": false,
+                "vnetImagePullEnabled": false,
+                "vnetContentShareEnabled": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": true,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "vnetBackupRestoreEnabled": false,
+                "customDomainVerificationId": "498658EB809A0B4297AEC95EF687D33D50770CCD9B7AC8001AAFC8B739158C2D",
+                "containerSize": 1536,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "publicNetworkAccess": "Enabled",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiFuncAppService_name'), '/ftp')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiFuncAppService_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Insights/components/MultiFuncAppService"
+            },
+            "properties": {
+                "allow": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiFuncAppService_name'), '/scm')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiFuncAppService_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Insights/components/MultiFuncAppService"
+            },
+            "properties": {
+                "allow": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiFuncAppService_name'), '/web')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiFuncAppService_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Insights/components/MultiFuncAppService"
+            },
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php"
+                ],
+                "netFrameworkVersion": "v8.0",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "REDACTED",
+                "scmType": "None",
+                "use32BitWorkerProcess": false,
+                "webSocketsEnabled": false,
+                "alwaysOn": true,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": true
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "publicNetworkAccess": "Enabled",
+                "cors": {
+                    "allowedOrigins": [
+                        "https://portal.azure.com"
+                    ],
+                    "supportCredentials": false
+                },
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.2",
+                "ftpsState": "FtpsOnly",
+                "preWarmedInstanceCount": 0,
+                "functionAppScaleLimit": 0,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 0,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiFuncAppService_name'), '/', parameters('sites_MultiFuncAppService_name'), '.azurewebsites.net')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiFuncAppService_name'))]"
+            ],
+            "properties": {
+                "siteName": "MultiFuncAppService",
+                "hostNameType": "Verified"
+            }
+        }
+    ]
+}

@@ -1,0 +1,191 @@
+{
+  "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Resources/deployments/Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5",
+  "name": "Microsoft.Web-FunctionApp-Portal-ff3ba116-b4e5",
+  "type": "Microsoft.Resources/deployments",
+  "properties": {
+    "templateHash": "5926095226842726102",
+    "parameters": {
+      "subscriptionId": {
+        "type": "String",
+        "value": "9555bc78-7a65-475f-9a4e-c4b264520f20"
+      },
+      "name": {
+        "type": "String",
+        "value": "MultiFuncApp2"
+      },
+      "location": {
+        "type": "String",
+        "value": "Japan East"
+      },
+      "use32BitWorkerProcess": {
+        "type": "Bool",
+        "value": false
+      },
+      "ftpsState": {
+        "type": "String",
+        "value": "FtpsOnly"
+      },
+      "storageAccountName": {
+        "type": "String",
+        "value": "multifuncapp2group9d8c"
+      },
+      "netFrameworkVersion": {
+        "type": "String",
+        "value": "v8.0"
+      },
+      "sku": {
+        "type": "String",
+        "value": "Dynamic"
+      },
+      "skuCode": {
+        "type": "String",
+        "value": "Y1"
+      },
+      "workerSize": {
+        "type": "String",
+        "value": "0"
+      },
+      "workerSizeId": {
+        "type": "String",
+        "value": "0"
+      },
+      "numberOfWorkers": {
+        "type": "String",
+        "value": "1"
+      },
+      "hostingPlanName": {
+        "type": "String",
+        "value": "ASP-MultiFuncApp2group-82da"
+      },
+      "serverFarmResourceGroup": {
+        "type": "String",
+        "value": "MultiFuncApp2_group"
+      },
+      "alwaysOn": {
+        "type": "Bool",
+        "value": false
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Running",
+    "timestamp": "2024-11-06T16:00:42.6644874Z",
+    "duration": "PT16M18.7147591S",
+    "correlationId": "5a5ea399-a28d-421a-b59b-f70e37e88d39",
+    "providers": [
+      {
+        "namespace": "Microsoft.Web",
+        "resourceTypes": [
+          {
+            "resourceType": "sites",
+            "locations": [
+              "japaneast"
+            ]
+          },
+          {
+            "resourceType": "sites/basicPublishingCredentialsPolicies",
+            "locations": [
+              null
+            ]
+          },
+          {
+            "resourceType": "serverfarms",
+            "locations": [
+              "japaneast"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "microsoft.insights",
+        "resourceTypes": [
+          {
+            "resourceType": "components",
+            "locations": [
+              "japaneast"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Storage",
+        "resourceTypes": [
+          {
+            "resourceType": "storageAccounts",
+            "locations": [
+              "japaneast"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/microsoft.insights/components/MultiFuncApp2",
+            "resourceType": "microsoft.insights/components",
+            "resourceName": "MultiFuncApp2"
+          },
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/serverfarms/ASP-MultiFuncApp2group-82da",
+            "resourceType": "Microsoft.Web/serverfarms",
+            "resourceName": "ASP-MultiFuncApp2group-82da"
+          },
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Storage/storageAccounts/multifuncapp2group9d8c",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "multifuncapp2group9d8c"
+          },
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/microsoft.insights/components/MultiFuncApp2",
+            "resourceType": "microsoft.insights/components",
+            "resourceName": "MultiFuncApp2",
+            "apiVersion": "2015-05-01"
+          },
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Storage/storageAccounts/multifuncapp2group9d8c",
+            "resourceType": "Microsoft.Storage/storageAccounts",
+            "resourceName": "multifuncapp2group9d8c",
+            "actionName": "listKeys",
+            "apiVersion": "2019-06-01"
+          }
+        ],
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/sites/MultiFuncApp2",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "MultiFuncApp2"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/Sites/MultiFuncApp2",
+            "resourceType": "Microsoft.Web/Sites",
+            "resourceName": "MultiFuncApp2"
+          }
+        ],
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/sites/MultiFuncApp2/basicPublishingCredentialsPolicies/scm",
+        "resourceType": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+        "resourceName": "MultiFuncApp2/scm"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/Sites/MultiFuncApp2",
+            "resourceType": "Microsoft.Web/Sites",
+            "resourceName": "MultiFuncApp2"
+          }
+        ],
+        "id": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/MultiFuncApp2_group/providers/Microsoft.Web/sites/MultiFuncApp2/basicPublishingCredentialsPolicies/ftp",
+        "resourceType": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+        "resourceName": "MultiFuncApp2/ftp"
+      }
+    ],
+    "validationLevel": "Template"
+  },
+  "tags": {
+    "primaryResourceId": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourcegroups/MultiFuncApp2_group/providers/Microsoft.Web/sites/MultiFuncApp2",
+    "provisioningHash": "customize-post-provisioning-steps-functionapp-deployment"
+  }
+}

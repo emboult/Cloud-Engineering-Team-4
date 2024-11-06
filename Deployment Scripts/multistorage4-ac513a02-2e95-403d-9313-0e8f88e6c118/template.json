@@ -1,0 +1,65 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "systemTopics_multistorage4_ac513a02_2e95_403d_9313_0e8f88e6c118_name": {
+            "defaultValue": "multistorage4-ac513a02-2e95-403d-9313-0e8f88e6c118",
+            "type": "String"
+        },
+        "storageaccounts_multistorage4_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/multi4/providers/microsoft.storage/storageaccounts/multistorage4",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.EventGrid/systemTopics",
+            "apiVersion": "2024-06-01-preview",
+            "name": "[parameters('systemTopics_multistorage4_ac513a02_2e95_403d_9313_0e8f88e6c118_name')]",
+            "location": "japaneast",
+            "properties": {
+                "source": "[parameters('storageaccounts_multistorage4_externalid')]",
+                "topicType": "microsoft.storage.storageaccounts"
+            }
+        },
+        {
+            "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+            "apiVersion": "2024-06-01-preview",
+            "name": "[concat(parameters('systemTopics_multistorage4_ac513a02_2e95_403d_9313_0e8f88e6c118_name'), '/StorageAntimalwareSubscription')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventGrid/systemTopics', parameters('systemTopics_multistorage4_ac513a02_2e95_403d_9313_0e8f88e6c118_name'))]"
+            ],
+            "properties": {
+                "destination": {
+                    "properties": {
+                        "maxEventsPerBatch": 1,
+                        "preferredBatchSizeInKilobytes": 64,
+                        "azureActiveDirectoryTenantId": "33e01921-4d64-4f8c-a055-5bdaffd5e33d",
+                        "azureActiveDirectoryApplicationIdOrUri": "f1f8da5f-609a-401d-85b2-d498116b7265"
+                    },
+                    "endpointType": "WebHook"
+                },
+                "filter": {
+                    "includedEventTypes": [
+                        "Microsoft.Storage.BlobCreated"
+                    ],
+                    "advancedFilters": [
+                        {
+                            "values": [
+                                "BlockBlob"
+                            ],
+                            "operatorType": "StringContains",
+                            "key": "data.blobType"
+                        }
+                    ]
+                },
+                "eventDeliverySchema": "EventGridSchema",
+                "retryPolicy": {
+                    "maxDeliveryAttempts": 30,
+                    "eventTimeToLiveInMinutes": 1440
+                }
+            }
+        }
+    ]
+}

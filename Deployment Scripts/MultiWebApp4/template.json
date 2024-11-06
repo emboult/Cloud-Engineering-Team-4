@@ -1,0 +1,198 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_MultiWebApp4_name": {
+            "defaultValue": "MultiWebApp4",
+            "type": "String"
+        },
+        "serverfarms_ASP_Multi4_916b_externalid": {
+            "defaultValue": "/subscriptions/9555bc78-7a65-475f-9a4e-c4b264520f20/resourceGroups/Multi4/providers/Microsoft.Web/serverfarms/ASP-Multi4-916b",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2023-12-01",
+            "name": "[parameters('sites_MultiWebApp4_name')]",
+            "location": "Japan East",
+            "tags": {
+                "MultiSoft4": "softteam"
+            },
+            "kind": "app",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "multiwebapp4-f5bceke3bhbabadf.japaneast-01.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "multiwebapp4-f5bceke3bhbabadf.scm.japaneast-01.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_ASP_Multi4_916b_externalid')]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "dnsConfiguration": {},
+                "vnetRouteAllEnabled": false,
+                "vnetImagePullEnabled": false,
+                "vnetContentShareEnabled": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": true,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "vnetBackupRestoreEnabled": false,
+                "customDomainVerificationId": "498658EB809A0B4297AEC95EF687D33D50770CCD9B7AC8001AAFC8B739158C2D",
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "publicNetworkAccess": "Enabled",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiWebApp4_name'), '/ftp')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiWebApp4_name'))]"
+            ],
+            "tags": {
+                "MultiSoft4": "softteam"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiWebApp4_name'), '/scm')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiWebApp4_name'))]"
+            ],
+            "tags": {
+                "MultiSoft4": "softteam"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiWebApp4_name'), '/web')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiWebApp4_name'))]"
+            ],
+            "tags": {
+                "MultiSoft4": "softteam"
+            },
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v8.0",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$MultiWebApp4",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": true,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": true
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "publicNetworkAccess": "Enabled",
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.2",
+                "ftpsState": "FtpsOnly",
+                "preWarmedInstanceCount": 0,
+                "elasticWebAppScaleLimit": 0,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 0,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_MultiWebApp4_name'), '/', parameters('sites_MultiWebApp4_name'), '-f5bceke3bhbabadf.japaneast-01.azurewebsites.net')]",
+            "location": "Japan East",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_MultiWebApp4_name'))]"
+            ],
+            "properties": {
+                "siteName": "MultiWebApp4",
+                "hostNameType": "Verified"
+            }
+        }
+    ]
+}

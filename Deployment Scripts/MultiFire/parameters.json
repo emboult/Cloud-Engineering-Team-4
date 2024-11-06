@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "azureFirewalls_MultiFire_name": {
+            "value": null
+        },
+        "publicIPAddresses_multifireip2_externalid": {
+            "value": null
+        },
+        "virtualNetworks_vnet_pljetrbx_externalid": {
+            "value": null
+        },
+        "publicIPAddresses_multifireip_externalid": {
+            "value": null
+        },
+        "firewallPolicies_MultiFirewallPolicy_externalid": {
+            "value": null
+        }
+    }
+}

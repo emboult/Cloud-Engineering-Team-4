@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "systemTopics_multistorage4_ac513a02_2e95_403d_9313_0e8f88e6c118_name": {
+            "value": null
+        },
+        "storageaccounts_multistorage4_externalid": {
+            "value": null
+        }
+    }
+}

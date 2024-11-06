@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_MultiWebApp4_name": {
+            "value": null
+        },
+        "vaults_multikeyslay_name": {
+            "value": null
+        },
+        "sites_MultiFuncAppService_name": {
+            "value": null
+        },
+        "serverfarms_ASP_Multi4_916b_name": {
+            "value": null
+        },
+        "components_MultiWebApp4_name": {
+            "value": null
+        },
+        "azureFirewalls_MultiFire_name": {
+            "value": null
+        },
+        "publicIPAddresses_multifireip_name": {
+            "value": null
+        },
+        "virtualNetworks_vnet_pljetrbx_name": {
+            "value": null
+        },
+        "storageAccounts_multistorage4_name": {
+            "value": null
+        },
+        "publicIPAddresses_multifireip2_name": {
+            "value": null
+        },
+        "components_MultiFuncAppService_name": {
+            "value": null
+        },
+        "firewallPolicies_MultiFirewallPolicy_name": {
+            "value": null
+        },
+        "actionGroups_Application_Insights_Smart_Detection_name": {
+            "value": null
+        },
+        "systemTopics_multistorage4_ac513a02_2e95_403d_9313_0e8f88e6c118_name": {
+            "value": null
+        },
+        "workspaces_DefaultWorkspace_9555bc78_7a65_475f_9a4e_c4b264520f20_EJP_externalid": {
+            "value": null
+        }
+    }
+}
